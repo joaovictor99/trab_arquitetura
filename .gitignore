@@ -1,0 +1,29 @@
+# Criado por https://www.toptal.com/developers/gitignore/api/modelsim
+# Edite em https://www.toptal.com/developers/gitignore?templates=modelsim
+
+### ModelSim ###
+# ignore os arquivos e diretórios gerados pelo ModelSim (arquivos temporários e assim por diante)
+[_ @] *
+
+# ignorar a saída de compilação de ModelSim
+* .mti
+* .dat
+* .dbs
+* .psm
+* .bak
+* .cmp
+* .jpg
+* .html
+* .bsf
+
+# ignorar saída de simulação de ModelSim
+wlf *
+* .wlf
+* .vstf
+* .ucdb
+cov * /
+transcrição *
+sc_dpiheader.h
+vsim.dbg
+
+# Fim de https://www.toptal.com/developers/gitignore/api/modelsim
