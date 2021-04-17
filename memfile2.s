@@ -8,6 +8,8 @@
 MAIN	MOV R1, #0		; R1 = 0
 	MOV R3, #4		; R3 = 4
 	MOV R7, #7		; R7 = 7
+	TST R3, #1		; Compara de R3 é par
+	SUB R1, R7, R3		; Sendo par, R1 = R7 - R3
 	CMP R3, R7		; R3 = R7?
 	ADDNE R1, R3, R7	; Se não for igual, R1 = R3 + R7
 	SUB R0, R15, R15 	; R0 = 0				

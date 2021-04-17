@@ -75,8 +75,16 @@
 
 //Implementação do MOV
 //MOV R3, #3 -> E3A03003 -> 1110 0011 1010 0000 0011 0000 0000 0011
-//cond(1110), op(0011), funct(1 1101) -> cmd(1101)
+//cond(1110), op(00), funct(1 1101) -> cmd(1101)
 
+//Implementação do CMP
+//CMP R3, R7 -> E1530007 -> 1110 0001 0101 0011 0000 0000 0000 0111
+//cond(1110), op(00), funct(0 1010) -> cmd(1010)
+
+//Implementação do TST
+//TST R3, R7 -> E1130007 -> 1110 0001 0001 0011 0000 0000 0000 0111
+//cond(1110), op(00), funct(0 1000) -> cmd(1000)
+ 
 module testbench();
 
   logic        clk;
@@ -188,12 +196,12 @@ module controller(input  logic         clk, reset,
                   output logic         PCSrc);
 
   logic [1:0] FlagW;
-  logic       PCS, RegW, MemW, MovF;
+  logic       PCS, RegW, MemW, MovF, NoWrite;
   
   decoder dec(Instr[27:26], Instr[25:20], Instr[15:12],
               FlagW, PCS, RegW, MemW,
-              MemtoReg, ALUSrc, MovF, ImmSrc, RegSrc, ALUControl);
-  condlogic cl(clk, reset, Instr[31:28], ALUFlags,
+              MemtoReg, ALUSrc, MovF, NoWrite, ImmSrc, RegSrc, ALUControl);
+  condlogic cl(clk, reset, NoWrite, Instr[31:28], ALUFlags,
                FlagW, PCS, RegW, MemW, MovF,
                PCSrc, RegWrite, MemWrite, MovFlag);
 endmodule
@@ -203,7 +211,7 @@ module decoder(input  logic [1:0] Op,
                input  logic [3:0] Rd,
                output logic [1:0] FlagW,
                output logic       PCS, RegW, MemW,
-               output logic       MemtoReg, ALUSrc, MovF,
+               output logic       MemtoReg, ALUSrc, MovF, NoWrite,
                output logic [1:0] ImmSrc, RegSrc, ALUControl);
 
   logic [9:0] controls;
@@ -236,40 +244,45 @@ module decoder(input  logic [1:0] Op,
       case(Funct[4:1]) 
   	    4'b0100: begin
 			ALUControl = 2'b00; // ADD
-			//NoWrite = 1'b0;
+			NoWrite = 1'b0;
 			MovF = 1'b0;
 		     end
   	    4'b0010: begin
 			ALUControl = 2'b01; // SUB
-			//NoWrite = 1'b0;
+			NoWrite = 1'b0;
 			MovF = 1'b0;
 		     end
             4'b0000: begin
 			ALUControl = 2'b10; // AND
-			//NoWrite = 1'b0;
+			NoWrite = 1'b0;
 			MovF = 1'b0;
 		     end
   	    4'b1100: begin
 			ALUControl = 2'b11; // ORR
-			//NoWrite = 1'b0;
+			NoWrite = 1'b0;
 			MovF = 1'b0;
 		     end
-	    //4'b1010: begin
-                       //ALUControl = 2'b01; // CMP = SUB
-                       //NoWrite = 1'b1;                        
-		     //end
+	    4'b1010: begin
+                       ALUControl = 2'b01; // CMP = SUB
+                       NoWrite = 1'b1; //para não escrever no registrador    
+		       MovF = 1'b0;                   
+		     end
    	    //4'b1000: begin
-                       //ALUControl = 2'b10; // TST = AND
+                       //ALUControl = 2'b10; // TST = AND - Faz a lógica E entre os bits dos registradores sem escrever no CPSR
                        //NoWrite = 1'b1;   
+		     //end
+   	    //4'b0001: begin
+                       //ALUControl = 2'b10; // EOR - faz o ou exclusivo lógico dos bits dos dois registradores
+                       //NoWrite = 1'b0;   
 		     //end
 	    4'b1101: begin
 			ALUControl = 2'bx;  // unimplemented
-			//NoWrite = 1'b0;
+			NoWrite = 1'b0;
 			MovF = 1'b1; // MOV
 		     end
   	    default: begin
 			ALUControl = 2'bx; // unimplemented
-			//NoWrite = 1'b0;
+			NoWrite = 1'b0;
 			MovF = 1'b0;
 		     end
       endcase
@@ -288,7 +301,7 @@ module decoder(input  logic [1:0] Op,
   assign PCS  = ((Rd == 4'b1111) & RegW) | Branch; 
 endmodule
 
-module condlogic(input  logic       clk, reset,
+module condlogic(input  logic       clk, reset, NoWrite,
                  input  logic [3:0] Cond,
                  input  logic [3:0] ALUFlags,
                  input  logic [1:0] FlagW,
@@ -307,7 +320,7 @@ module condlogic(input  logic       clk, reset,
   // write controls are conditional
   condcheck cc(Cond, Flags, CondEx);
   assign FlagWrite = FlagW & {2{CondEx}};
-  assign RegWrite  = RegW  & CondEx;
+  assign RegWrite  = RegW  & CondEx & ~NoWrite;
   assign MemWrite  = MemW  & CondEx;
   assign PCSrc     = PCS   & CondEx;
   assign MovFlag   = MovF  & CondEx;
@@ -485,5 +498,4 @@ module alu(input  logic [31:0] a, b,
                     (a[31] ^ sum[31]); 
   assign ALUFlags    = {neg, zero, carry, overflow};
 endmodule
-
 

@@ -11,24 +11,24 @@ cModel Technology
 dC:/intelFPGA_pro/20.4
 vadder
 Z0 DXx6 sv_std 3 std 0 22 VYECXdT12H8WgbUP_5Y6:3
-Z1 !s110 1618669571
+Z1 !s110 1618670480
 !i10b 1
 !s100 gjJAUE[ljJRC<4<0]FWKe3
 Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
 IMCDGh4A>5RBmA@EnGL5Nf0
 S1
 Z3 dC:/Users/vitor/Desktop/Trabalho de Arquitetura/trab_arquitetura
-Z4 w1618669564
+Z4 w1618670474
 Z5 8C:/Users/vitor/Desktop/Trabalho de Arquitetura/trab_arquitetura/arm_single.sv
 Z6 FC:/Users/vitor/Desktop/Trabalho de Arquitetura/trab_arquitetura/arm_single.sv
-!i122 1
+!i122 2
 L0 438 6
 Z7 VDg1SIo80bB@j0V0VzS_@n1
 Z8 OV;L;2020.3;71
 r1
 !s85 0
 31
-Z9 !s108 1618669570.000000
+Z9 !s108 1618670479.000000
 !s107 C:/Users/vitor/Desktop/Trabalho de Arquitetura/trab_arquitetura/arm_single.sv|
 Z10 !s90 -reportprogress|300|-work|projeto_final|-sv|-stats=none|C:/Users/vitor/Desktop/Trabalho de Arquitetura/trab_arquitetura/arm_single.sv|
 !i113 1
@@ -46,7 +46,7 @@ R3
 R4
 R5
 R6
-!i122 1
+!i122 2
 L0 474 27
 R7
 R8
@@ -71,7 +71,7 @@ R3
 R4
 R5
 R6
-!i122 1
+!i122 2
 L0 162 23
 R7
 R8
@@ -96,7 +96,7 @@ R3
 R4
 R5
 R6
-!i122 1
+!i122 2
 L0 329 29
 R7
 R8
@@ -121,7 +121,7 @@ R3
 R4
 R5
 R6
-!i122 1
+!i122 2
 L0 304 24
 R7
 R8
@@ -146,7 +146,7 @@ R3
 R4
 R5
 R6
-!i122 1
+!i122 2
 L0 186 22
 R7
 R8
@@ -171,7 +171,7 @@ R3
 R4
 R5
 R6
-!i122 1
+!i122 2
 L0 359 42
 R7
 R8
@@ -188,15 +188,15 @@ vdecoder
 R0
 R1
 !i10b 1
-!s100 DoRVH3:hb]PPJdO@_Ujd60
+!s100 RVA3eKb=jMYOddNZFikPk3
 R2
-IEZ^2<FBg0GI0KHd>H=B`=3
+IP2]z]PzjMCXC3Ya1?JW4i1
 S1
 R3
 R4
 R5
 R6
-!i122 1
+!i122 2
 L0 209 94
 R7
 R8
@@ -221,7 +221,7 @@ R3
 R4
 R5
 R6
-!i122 1
+!i122 2
 L0 139 11
 R7
 R8
@@ -246,7 +246,7 @@ R3
 R4
 R5
 R6
-!i122 1
+!i122 2
 L0 422 15
 R7
 R8
@@ -271,7 +271,7 @@ R3
 R4
 R5
 R6
-!i122 1
+!i122 2
 L0 445 9
 R7
 R8
@@ -296,7 +296,7 @@ R3
 R4
 R5
 R6
-!i122 1
+!i122 2
 L0 455 9
 R7
 R8
@@ -321,7 +321,7 @@ R3
 R4
 R5
 R6
-!i122 1
+!i122 2
 L0 151 10
 R7
 R8
@@ -346,7 +346,7 @@ R3
 R4
 R5
 R6
-!i122 1
+!i122 2
 L0 465 7
 R7
 R8
@@ -371,7 +371,7 @@ R3
 R4
 R5
 R6
-!i122 1
+!i122 2
 L0 402 19
 R7
 R8
@@ -396,7 +396,7 @@ R3
 R4
 R5
 R6
-!i122 1
+!i122 2
 L0 88 37
 R7
 R8
@@ -421,7 +421,7 @@ R3
 R4
 R5
 R6
-!i122 1
+!i122 2
 L0 126 12
 R7
 R8
