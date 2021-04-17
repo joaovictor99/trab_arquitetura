@@ -8,6 +8,7 @@
 MAIN	MOV R1, #0		; R1 = 0
 	MOV R3, #4		; R3 = 4
 	MOV R7, #7		; R7 = 7
+	EOR R5, R3, R7		; Faz o OuExclusivo de R3 e R7 bit a bit - no caso R5 = 3
 	TST R3, #1		; Compara de R3 é par
 	SUB R1, R7, R3		; Sendo par, R1 = R7 - R3
 	CMP R3, R7		; R3 = R7?

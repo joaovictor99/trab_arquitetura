@@ -267,10 +267,10 @@ module decoder(input  logic [1:0] Op,
                        NoWrite = 1'b1; //para não escrever no registrador    
 		       MovF = 1'b0;                   
 		     end
-   	    //4'b1000: begin
-                       //ALUControl = 2'b10; // TST = AND - Faz a lógica E entre os bits dos registradores sem escrever no CPSR
-                       //NoWrite = 1'b1;   
-		     //end
+   	    4'b1000: begin
+                       ALUControl = 2'b10; // TST = AND - Faz a lógica E entre os bits dos registradores sem escrever no CPSR
+                       NoWrite = 1'b1;   
+		     end
    	    //4'b0001: begin
                        //ALUControl = 2'b10; // EOR - faz o ou exclusivo lógico dos bits dos dois registradores
                        //NoWrite = 1'b0;   
