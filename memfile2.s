@@ -5,7 +5,11 @@
 // TST, LSL, CMN, ADC
 // If successful, it should write the value 7 to address 100
 
-MAIN	MOV R3, #3		; R3 = 3
+MAIN	MOV R1, #0		; R1 = 0
+	MOV R3, #4		; R3 = 4
+	MOV R7, #7		; R7 = 7
+	CMP R3, R7		; R3 = R7?
+	ADDNE R1, R3, R7	; Se não for igual, R1 = R3 + R7
 	SUB R0, R15, R15 	; R0 = 0				
 	ADD R2, R0, #5      	; R2 = 5             
 	ADD R3, R0, #12    	; R3 = 12            
