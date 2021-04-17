@@ -1,5 +1,5 @@
 // arm_single.sv
-// Trabalhao de Arquitetura 2020/2 - João Victor Miranda, João Barbosa, Ramon Sousa
+// Trabalho de Arquitetura 2020/2 - João Victor Miranda, João Barbosa, Ramon Sousa
 // David_Harris@hmc.edu and Sarah_Harris@hmc.edu 25 June 2013
 // Single-cycle implementation of a subset of ARMv4
 // 
@@ -159,7 +159,7 @@ module imem(input  logic [31:0] a,
   logic [31:0] RAM[63:0];
 
   initial
-      $readmemh("memfile2.dat",RAM);
+      $readmemh("memfile3.dat",RAM);
 
   assign rd = RAM[a[31:2]]; // word aligned
 endmodule
